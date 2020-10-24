@@ -67,7 +67,7 @@ def fun(msg):
 arg = [i for i in range(10)]
 start = time.time()
 pool = Pool(processes=5)
-# return_list=Threadpool.map(fun, arg) #多线程(只能用于IO类任务加速)
+# pool = Threadpool(processes=5) #多线程(只能用于IO类任务加速)
 return_list=pool.map(fun, arg) #多进程
 pool.close()
 pool.join()
