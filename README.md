@@ -75,4 +75,40 @@ end = time.time()
 print(end-start)
 print(return_list)
 ```
+7、忽略警告信息
+```  python
+import warnings
+warnings.filterwarnings('ignore')
+```
+8、抛出代码异常所在行数
+```  python
+import logging
+try:
+    pass
+except Exception as e:
+    logging.error(
+                'failed in file:{}, lineno:{}'.format(e.__traceback__.tb_frame.f_globals["__file__"],
+                                                      e.__traceback__.tb_lineno))
+```
+9、计时器类
+```  python
+import time 
+class Timer():
+    def __init__(self, name='task', verbose=True):
+        self.name = name
+        self.verbose = verbose
 
+    def __enter__(self):
+        self.start = time.time()
+        return self
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        if self.verbose:
+            print('[Time] {} consumes {:.4f} s'.format(
+                self.name,
+                time.time() - self.start))
+        return exc_type is None
+#使用方法
+with Timer('taks1'):
+    time.sleep(2)
+```
