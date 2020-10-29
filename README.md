@@ -112,3 +112,33 @@ class Timer():
 with Timer('taks1'):
     time.sleep(2)
 ```
+10、git相关
+```
+拉取指定分支：git clone -b feature-1 http://xxxx.git
+本地分支合并到远程分支：git push --set-upstream origin feature-1
+基本操作：
+git status ./           查看这个文件夹下的文件状态，会列出有哪些没有加入追踪，哪些没有commit
+git add ./*             把这个文件下的所有应该加入追踪的，加入到暂存区
+git commit -m "日志描述" ./           把这个文件夹下可以commit的，都commit到本地库
+git commit --amend      注释修改
+git push                push到远程库
+#github host添加
+219.76.4.4 github-cloud.s3.amazonaws.com
+192.30.253.118  gist.github.com
+192.30.253.112  github.com
+```
+11、数组合并
+```
+import numpy as np
+a = np.array([[1,2],[3,4],[5,6]])
+b = np.array([[11,22],[33,44],[55,66]])
+#直接将所有元素重新排列成新的一维数组
+c = np.append(a,b)
+print(c)
+[1,2,3,4,5,6,11,22,33,44,55,66]
+
+#纵向拼接(行增加)
+np.concatenate((a,b),axis=0) 等价于 np.vstack((a,b))
+#横向拼接(列增加)
+np.concatenate((a,b),axis=1) 等价于 np.行stack((a,b))
+```
