@@ -142,3 +142,51 @@ np.concatenate((a,b),axis=0) 等价于 np.vstack((a,b))
 #横向拼接(列增加)
 np.concatenate((a,b),axis=1) 等价于 np.行stack((a,b))
 ```
+12、获取主机hostname
+```  python
+import socket
+print(socket.gethostname())
+```
+13、操作zookeeper
+```  python
+from kazoo.client import KazooClient
+zk = KazooClient(hosts='192.168.91.128:2181,192.168.91.129:2181')    #如果是本地那就写127.0.0.1
+zk.start()    #与zookeeper连接
+zk.create('/abc/JQK/XYZ/0001',b'this is my house',makepath=True)    #创建节点
+zk.get_children('/')     #查看某目录的子节点
+zk.set('/abc/JQK/XYZ/0001',b"this is my horse!")     #更改节点值
+zk.delete('/abc/JQK/XYZ/0001',recursive=True)      #删除节点
+# zk锁使用
+lock = self.zk_client.Lock('/abc/JQK/XYZ/lock', identifier='lock1')
+with lock:
+    print('do something in lock')
+zk.stop()     #断开
+```
+14、操作kafka
+```  python
+from kafka import KafkaProducer,KafkaConsumer
+import json
+#生产者
+producer = KafkaProducer(
+                            value_serializer=lambda v: json.dumps(v).encode('utf-8'),
+                            bootstrap_servers=['192.168.12.101:6667','192.168.12.102:6667','192.168.12.103:6667']
+                         )
+for i in range(10):
+    data={
+        "name":"李四",
+        "age":23,
+        "gender":"男",
+        "id":i
+    }
+    producer.send('test_lyl2', data)
+producer.close()
+
+#消费者
+consumer = KafkaConsumer('test_lyl2',group_id="lyl-gid1",
+                         bootstrap_servers=['192.168.12.101:6667','192.168.12.102:6667','192.168.12.103:6667'],
+                         auto_offset_reset='earliest',value_deserializer=json.loads
+                         )
+for message in consumer:
+    print(message.value)
+``` 
+
