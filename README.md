@@ -189,4 +189,18 @@ consumer = KafkaConsumer('test_lyl2',group_id="lyl-gid1",
 for message in consumer:
     print(message.value)
 ``` 
+15、执行字符串表达式
+```  python
+equation = '(1+2)/4'
+print(eval(equation))  # 输出是 0.75
+#保留分数表达
+from sympy import Integer
+import re
+r = (Integer(1) + Integer(2)) / Integer(4)
+print(r)  # 输出是 3/4 而不是 0.75
+#转换为分数表达
+new_equation = re.sub('(\d+)', 'Integer(\\1)', equation)
+print(new_equation)  # 输出是 (Integer(1)+Integer(2))/Integer(4)
+print(eval(new_equation))  # 输出是 3/4
 
+``` 
