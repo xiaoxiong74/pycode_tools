@@ -204,3 +204,21 @@ print(new_equation)  # 输出是 (Integer(1)+Integer(2))/Integer(4)
 print(eval(new_equation))  # 输出是 3/4
 
 ``` 
+16、读取json数据
+```  python
+data = []
+for l in open(filename):
+    data.append(json.loads(l))
+# 格式化的json数据处理(多行组成一条json)
+js = ""
+data = []
+f = open(filename, encoding="utf-8")
+for i, s in enumerate(f):
+    js += s.replace("\n", "").strip()
+    i += 1
+    if i % 6 == 0:  #每6行为一条json数据
+        data.append(json.loads(js))
+f.close()
+        js = ""
+     
+``` 
