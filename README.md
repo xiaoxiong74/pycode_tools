@@ -222,3 +222,11 @@ f.close()
         js = ""
      
 ``` 
+17、pip代理
+``` 
+python -m pip --no-cache-dir install --upgrade --proxy="http://xxxx:8080" -i http://mirrors.aliyun.com/pypi/simple/  --trusted-host mirrors.aliyun.com"
+``` 
+18、wget代理
+``` 
+wget -e "https_proxy=http://xxxx:8080" https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
+``` 
