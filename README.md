@@ -50,7 +50,6 @@ with open(file_path, 'rb') as file:
 ```  python
 from tqdm import tqdm
 from time import sleep
-
 for i in tqdm(range(10)):
     sleep(2)
 ```
@@ -229,4 +228,20 @@ python -m pip --no-cache-dir install --upgrade --proxy="http://xxxx:8080" -i htt
 18、wget代理
 ``` 
 wget -e "https_proxy=http://xxxx:8080" https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
+``` 
+19、解压与匹配
+``` 
+# 批量解压
+gzip -d *.gz
+# 批量匹配并将匹配行写入文件  
+cat 2020-*.log|grep "TimeCount" -->alllog.log
+``` 
+20、进程、内存、目录大小查看
+``` 
+#查看进程
+ps -ef|grep python
+#查看内存消耗
+ps -aux | grep predict
+#查看当前目录大小
+df -h --max-depth=1
 ``` 
