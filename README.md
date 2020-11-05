@@ -245,3 +245,22 @@ ps -aux | grep predict
 #查看当前目录大小
 df -h --max-depth=1
 ``` 
+21、keras按需分配显存
+``` python
+import keras.backend.tensorflow_backend as K
+import tensorflow as tf
+import os
+ 
+os.environ["CUDA_VISIBLE_DEVICES"] = "1"
+config = tf.ConfigProto()
+config.gpu_options.allow_growth=True   #不全部占满显存, 按需分配
+sess = tf.Session(config=config)
+K.set_session(sess)
+``` 
+22、keras交叉验证时清除session
+``` python
+from keras import backend as K 
+
+#del model
+K.clear_session()
+``` 
