@@ -264,3 +264,12 @@ from keras import backend as K
 #del model
 K.clear_session()
 ``` 
+23、weget代理设置
+``` 
+#https
+wget -e "https_proxy=http://xxxxx:8080" --proxy-user=user --proxy-passwd=passwd https://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
+#http
+wget -e "http_proxy=http://xxxxx:8080" --proxy-user=user --proxy-passwd=passwd http://www.python.org/ftp/python/3.6.8/Python-3.6.8.tgz
+#ftp
+wget -e "ftp_proxy=http://xxxxx:8080" --proxy-user=user --proxy-passwd=passwd ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2
+``` 
