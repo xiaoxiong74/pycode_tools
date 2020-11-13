@@ -273,3 +273,11 @@ wget -e "http_proxy=http://xxxxx:8080" --proxy-user=user --proxy-passwd=passwd h
 #ftp
 wget -e "ftp_proxy=http://xxxxx:8080" --proxy-user=user --proxy-passwd=passwd ftp://gcc.gnu.org/pub/gcc/infrastructure/mpfr-2.4.2.tar.bz2
 ``` 
+24、找出数组中最大的N个数
+``` python
+#argpartition()可以找出 N 个最大数值的索引
+import numpy as np
+x = np.array([12, 10, 12, 0, 6, 8, 9, 1, 16, 4, 6, 0])
+index_val = np.argpartition(x, -4)[-4:]
+np.sort(x[index_val])
+``` 
